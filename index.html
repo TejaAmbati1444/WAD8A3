@@ -1,20 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html>
 <head>
     <title>Grade a Student</title>
     <script>
         function submitmarks() {
+            // Retrieve values for 5 subjects
             var s1 = parseFloat(document.f1.t1.value) || 0;
             var s2 = parseFloat(document.f1.t2.value) || 0;
             var s3 = parseFloat(document.f1.t3.value) || 0;
             var s4 = parseFloat(document.f1.t4.value) || 0;
             var s5 = parseFloat(document.f1.t5.value) || 0;
-            var s6 = parseFloat(document.f1.t6.value) || 0;
 
-            var total = s1 + s2 + s3 + s4 + s5 + s6;
-            var avg = total / 6;
+            // Calculate Total and Average
+            var total = s1 + s2 + s3 + s4 + s5;
+            var avg = total / 5;
             var grade = "";
 
+            // Grading Logic
             if (avg >= 91) { grade = "A"; }
             else if (avg >= 81) { grade = "B"; }
             else if (avg >= 71) { grade = "C"; }
@@ -22,21 +24,27 @@
             else if (avg >= 35) { grade = "E"; }
             else { grade = "F (Fail)"; }
 
+            // Output to the result div
             document.getElementById("result").innerHTML = 
-                "Average Marks: " + avg.toFixed(2) + "<br>Grade: " + grade;
+                "Total Marks: " + total + "<br>" +
+                "Average Marks: " + avg.toFixed(2) + "<br>" +
+                "Grade: " + grade;
         }
     </script>
 </head>
 <body>
+    <h2>Student Grading System</h2>
     <form name="f1">
-        Subject 1: <input type="text" name="t1"><br>
-        Subject 2: <input type="text" name="t2"><br>
-        Subject 3: <input type="text" name="t3"><br>
-        Subject 4: <input type="text" name="t4"><br>
-        Subject 5: <input type="text" name="t5"><br>
-        <input type="button" value="Submit" onclick="submitmarks()">
+        Subject 1: <input type="number" name="t1"><br><br>
+        Subject 2: <input type="number" name="t2"><br><br>
+        Subject 3: <input type="number" name="t3"><br><br>
+        Subject 4: <input type="number" name="t4"><br><br>
+        Subject 5: <input type="number" name="t5"><br><br>
+        <input type="button" value="Calculate Grade" onclick="submitmarks()">
     </form>
-    <div id="result" style="margin-top:20px; font-weight:bold;"></div>
+
+    <div id="result" style="margin-top:20px; font-weight:bold; color: blue;"></div>
 </body>
 </html>
+
 
