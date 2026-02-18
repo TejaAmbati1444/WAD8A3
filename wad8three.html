@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade a Student</title>
+    <script>
+        function submitmarks() {
+            var s1 = parseFloat(document.f1.t1.value) || 0;
+            var s2 = parseFloat(document.f1.t2.value) || 0;
+            var s3 = parseFloat(document.f1.t3.value) || 0;
+            var s4 = parseFloat(document.f1.t4.value) || 0;
+            var s5 = parseFloat(document.f1.t5.value) || 0;
+            var s6 = parseFloat(document.f1.t6.value) || 0;
+
+            var total = s1 + s2 + s3 + s4 + s5 + s6;
+            var avg = total / 6;
+            var grade = "";
+
+            if (avg >= 91) { grade = "A"; }
+            else if (avg >= 81) { grade = "B"; }
+            else if (avg >= 71) { grade = "C"; }
+            else if (avg >= 61) { grade = "D"; }
+            else if (avg >= 35) { grade = "E"; }
+            else { grade = "F (Fail)"; }
+
+            document.getElementById("result").innerHTML = 
+                "Average Marks: " + avg.toFixed(2) + "<br>Grade: " + grade;
+        }
+    </script>
+</head>
+<body>
+    <form name="f1">
+        Subject 1: <input type="text" name="t1"><br>
+        Subject 2: <input type="text" name="t2"><br>
+        Subject 3: <input type="text" name="t3"><br>
+        Subject 4: <input type="text" name="t4"><br>
+        Subject 5: <input type="text" name="t5"><br>
+        Subject 6: <input type="text" name="t6"><br>
+        <input type="button" value="Submit" onclick="submitmarks()">
+    </form>
+    <div id="result" style="margin-top:20px; font-weight:bold;"></div>
+</body>
+</html>
